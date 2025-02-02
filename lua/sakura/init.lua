@@ -42,7 +42,7 @@ local palette = {
     overlay = lighten(base, 15),
     text = text,
     subtle = blend(text, 0.5, base),
-    muted = blend(text, 0.25, base),
+    muted = blend(text, 0.1, base),
     pink = colors.pink,
     yellow = colors.yellow,
     green = colors.green,
@@ -74,6 +74,7 @@ local function night_colors()
     local comment_text_color = palette.subtle
     local operator_text_color = palette.subtle
     local punctuation_text_color = palette.subtle
+    local whitespace_text_color = palette.muted
 
     return {
         editor = {
@@ -88,13 +89,13 @@ local function night_colors()
             DiffDelete   = { bg = blend(palette.red, 0.15, palette.base) },
             DiffText     = { bg = blend(palette.cyan, 0.3, palette.base) },
             Directory    = { fg = palette.yellow },
-            EndOfBuffer  = { fg = palette.muted },
+            EndOfBuffer  = { fg = whitespace_text_color, },
             ErrorMsg     = { fg = palette.red, },
             FoldColumn   = { fg = palette.subtle },
             IncSearch    = { fg = palette.text, bg = selection_background_color },
             LineNr       = { fg = palette.subtle },
             MatchParen   = { fg = palette.pink, bold = true },
-            NonText      = { fg = palette.muted },
+            NonText      = { fg = whitespace_text_color, },
             Normal       = { fg = palette.text, bg = palette.base, },
             NormalFloat  = { link = "Normal" },
             NormalNC     = { fg = palette.subtle, bg = palette.base, },
@@ -117,7 +118,7 @@ local function night_colors()
             Visual       = { bg = selection_background_color },
             VisualNOS    = { link = "Visual" },
             WarningMsg   = { fg = palette.yellow },
-            Whitespace   = { fg = palette.muted },
+            Whitespace   = { fg = whitespace_text_color, },
             WinSeparator = { fg = separator_color, },
             lCursor      = { link = "Cursor" },
         },
@@ -142,6 +143,11 @@ local function night_colors()
             GitSignsUntrackedLn = { bg = blend(palette.yellow, 0.15, palette.base), },
             GitSignsUntrackedLnInline = { bg = blend(palette.yellow, 0.3, palette.base), },
             GitSignsUntrackedNr = { link = "GitSignsUntracked", },
+        },
+        indent_blankline = {
+            IblIndent = { fg = whitespace_text_color, },
+            IblWhitespace = { fg = whitespace_text_color, },
+            IblScope = { fg = palette.pink, },
         },
         syntax = {
             Bold          = { bold = true },
@@ -327,6 +333,7 @@ end
 local function set_colors(c)
     set_highlights(c.editor)
     set_highlights(c.gitsigns)
+    set_highlights(c.indent_blankline)
     set_highlights(c.syntax)
     set_highlights(c.treesitter)
     set_highlights(c.nvim_cmp)
