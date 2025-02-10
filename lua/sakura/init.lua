@@ -1,34 +1,5 @@
 local c = require("sakura.color-utils")
-
-local color_palette = {
-    pink = { 323, 50, 72, },
-    yellow = { 38, 50, 62, },
-    green = { 86, 30, 63, },
-    cyan = { 200, 50, 65, },
-    purple = { 268, 45, 73, },
-    red = { 0, 55, 67, },
-}
-
-local night_base = { 230, 30, 17, }
-local night_text = { 230, 30, 83, }
-
-local night_palette = {
-    base = night_base,
-    surface = c.lighten(night_base, 5),
-    overlay = c.lighten(night_base, 15),
-    text = night_text,
-    subtle = c.desaturate(c.blend(night_text, 0.6, night_base), 5),
-    muted = c.desaturate(c.blend(night_text, 0.1, night_base), 5),
-    pink = color_palette.pink,
-    yellow = color_palette.yellow,
-    green = color_palette.green,
-    cyan = color_palette.cyan,
-    purple = color_palette.purple,
-    red = color_palette.red,
-    highlight_low = c.lighten(night_base, 5),
-    highlight_medium = c.lighten(night_base, 10),
-    highlight_high = c.lighten(night_base, 25),
-}
+local night_palette = require("sakura.palettes.sakura-night")
 
 local function night_highlights()
     local selection_background_color = night_palette.highlight_medium
@@ -53,13 +24,6 @@ local function night_highlights()
     local punctuation_text_color = night_palette.subtle
     local whitespace_text_color = night_palette.muted
 
-    local green_background = c.desaturate(c.darken(night_palette.green, 35), 15)
-    local yellow_background = c.desaturate(c.darken(night_palette.yellow, 35), 25)
-    local red_background = c.desaturate(c.darken(night_palette.red, 40), 30)
-    local cyan_background = c.desaturate(c.darken(night_palette.cyan, 35), 25)
-    local purple_background = c.desaturate(c.darken(night_palette.purple, 35), 25)
-    local pink_background = c.desaturate(c.darken(night_palette.pink, 35), 25)
-
     return {
         diagnostics = {
             DiagnosticError = { fg = night_palette.red, },
@@ -71,11 +35,11 @@ local function night_highlights()
             DiagnosticUnderlineInfo = { sp = night_palette.cyan, },
             DiagnosticUnderlineOk = { sp = night_palette.green, },
             DiagnosticUnderlineWarn = { sp = night_palette.yellow, },
-            DiagnosticVirtualTextError = { fg = night_palette.red, bg = red_background, },
-            DiagnosticVirtualTextHint = { fg = night_palette.purple, bg = purple_background, },
-            DiagnosticVirtualTextInfo = { fg = night_palette.cyan, bg = cyan_background, },
-            DiagnosticVirtualTextOk = { fg = night_palette.green, bg = green_background, },
-            DiagnosticVirtualTextWarn = { fg = night_palette.yellow, bg = yellow_background, },
+            DiagnosticVirtualTextError = { fg = night_palette.red, bg = night_palette.red_background, },
+            DiagnosticVirtualTextHint = { fg = night_palette.purple, bg = night_palette.purple_background, },
+            DiagnosticVirtualTextInfo = { fg = night_palette.cyan, bg = night_palette.cyan_background, },
+            DiagnosticVirtualTextOk = { fg = night_palette.green, bg = night_palette.green_background, },
+            DiagnosticVirtualTextWarn = { fg = night_palette.yellow, bg = night_palette.yellow_background, },
             DiagnosticWarn = { fg = night_palette.yellow, },
         },
         editor = {
@@ -85,11 +49,11 @@ local function night_highlights()
             CursorIM     = { link = "Cursor" },
             CursorLine   = { bg = night_palette.highlight_low },
             CursorLineNr = { fg = night_palette.pink, bold = true },
-            DiffAdd      = { bg = green_background, },
-            DiffChange   = { bg = cyan_background, },
-            DiffDelete   = { bg = red_background, },
-            DiffText     = { bg = c.saturate(cyan_background, 10), },
-            Directory    = { fg = night_palette.yellow },
+            DiffAdd      = { bg = night_palette.green_background, },
+            DiffChange   = { bg = night_palette.cyan_background, },
+            DiffDelete   = { bg = night_palette.red_background, },
+            DiffText     = { bg = c.saturate(night_palette.cyan_background, 10), },
+            Directory    = { fg = night_palette.pink, },
             EndOfBuffer  = { fg = whitespace_text_color, },
             ErrorMsg     = { fg = night_palette.red, },
             FoldColumn   = { fg = night_palette.subtle },
@@ -129,25 +93,25 @@ local function night_highlights()
         },
         gitsigns = {
             GitSignsAdd = { fg = night_palette.green, },
-            GitSignsAddInline = { bg = green_background, },
-            GitSignsAddLn = { bg = green_background, },
+            GitSignsAddInline = { bg = night_palette.green_background, },
+            GitSignsAddLn = { bg = night_palette.green_background, },
             GitSignsAddLnInline = { link = "GitSignsAddLn", },
             GitSignsAddNr = { link = "GitSignsAdd", },
             GitSignsAddPreview = { link = "GitSignsAddLnInline", },
             GitSignsChange = { fg = night_palette.cyan, },
-            GitSignsChangeInline = { bg = cyan_background, },
-            GitSignsChangeLn = { bg = cyan_background, },
+            GitSignsChangeInline = { bg = night_palette.cyan_background, },
+            GitSignsChangeLn = { bg = night_palette.cyan_background, },
             GitSignsChangeLnInline = { link = "GitSignsChangeLn", },
             GitSignsChangeNr = { link = "GitSignsChange", },
             GitSignsDelete = { fg = night_palette.red, },
-            GitSignsDeleteInline = { bg = red_background, },
-            GitSignsDeleteLn = { bg = red_background, },
+            GitSignsDeleteInline = { bg = night_palette.red_background, },
+            GitSignsDeleteLn = { bg = night_palette.red_background, },
             GitSignsDeleteLnInline = { link = "GitSignsDeleteLn", },
             GitSignsDeleteNr = { link = "GitSignsDelete", },
             GitSignsDeletePreview = { link = "GitSignsDeleteLnInline", },
             GitSignsUntracked = { fg = night_palette.yellow, },
-            GitSignsUntrackedInline = { bg = yellow_background, },
-            GitSignsUntrackedLn = { bg = yellow_background, },
+            GitSignsUntrackedInline = { bg = night_palette.yellow_background, },
+            GitSignsUntrackedLn = { bg = night_palette.yellow_background, },
             GitSignsUntrackedLnInline = { link = "GitSignsUntrackedLn", },
             GitSignsUntrackedNr = { link = "GitSignsUntracked", },
         },
