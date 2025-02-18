@@ -1,1 +1,1 @@
-require("sakura").load()
+require("sakura").load("night")

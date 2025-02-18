@@ -1,190 +1,203 @@
 local c = require("sakura.color-utils")
-local night_palette = require("sakura.palettes.sakura-night")
 
-local function night_highlights()
-    local selection_background_color = night_palette.highlight_medium
-    local selection_text_color = night_palette.text
+local function highlights(palette)
+    local selection_background_color = palette.highlight_medium
+    local selection_text_color = palette.text
 
-    local separator_color = night_palette.highlight_high
-    local statusline_background_color = night_palette.surface
+    local separator_color = palette.highlight_high
+    local statusline_background_color = palette.surface
 
-    local variable_text_color = night_palette.text
-    local parameter_text_color = night_palette.purple
-    local constant_text_color = night_palette.purple
-    local property_text_color = night_palette.green
-    local keyword_text_color = night_palette.pink
-    local number_text_color = night_palette.pink
-    local boolean_text_color = night_palette.pink
-    local string_text_color = night_palette.yellow
-    local function_text_color = night_palette.cyan
-    local metadata_text_color = night_palette.green
-    local type_text_color = night_palette.yellow
-    local comment_text_color = night_palette.subtle
-    local operator_text_color = night_palette.subtle
-    local punctuation_text_color = night_palette.subtle
-    local whitespace_text_color = night_palette.muted
+    local variable_text_color = palette.text
+    local parameter_text_color = palette.purple
+    local constant_text_color = palette.purple
+    local property_text_color = palette.green
+    local keyword_text_color = palette.pink
+    local number_text_color = palette.pink
+    local boolean_text_color = palette.pink
+    local string_text_color = palette.yellow
+    local function_text_color = palette.cyan
+    local metadata_text_color = palette.green
+    local type_text_color = palette.yellow
+    local comment_text_color = palette.subtle
+    local operator_text_color = palette.subtle
+    local punctuation_text_color = palette.subtle
+    local whitespace_text_color = palette.muted
 
     return {
         diagnostics = {
-            DiagnosticError = { fg = night_palette.red, },
-            DiagnosticHint = { fg = night_palette.purple, },
-            DiagnosticInfo = { fg = night_palette.cyan, },
-            DiagnosticOk = { fg = night_palette.green, },
-            DiagnosticUnderlineError = { sp = night_palette.red, },
-            DiagnosticUnderlineHint = { sp = night_palette.purple, },
-            DiagnosticUnderlineInfo = { sp = night_palette.cyan, },
-            DiagnosticUnderlineOk = { sp = night_palette.green, },
-            DiagnosticUnderlineWarn = { sp = night_palette.yellow, },
-            DiagnosticVirtualTextError = { fg = night_palette.red, bg = night_palette.red_background, },
-            DiagnosticVirtualTextHint = { fg = night_palette.purple, bg = night_palette.purple_background, },
-            DiagnosticVirtualTextInfo = { fg = night_palette.cyan, bg = night_palette.cyan_background, },
-            DiagnosticVirtualTextOk = { fg = night_palette.green, bg = night_palette.green_background, },
-            DiagnosticVirtualTextWarn = { fg = night_palette.yellow, bg = night_palette.yellow_background, },
-            DiagnosticWarn = { fg = night_palette.yellow, },
+            DiagnosticError = { fg = palette.red, },
+            DiagnosticHint = { fg = palette.purple, },
+            DiagnosticInfo = { fg = palette.cyan, },
+            DiagnosticOk = { fg = palette.green, },
+            DiagnosticUnderlineError = { sp = palette.red, },
+            DiagnosticUnderlineHint = { sp = palette.purple, },
+            DiagnosticUnderlineInfo = { sp = palette.cyan, },
+            DiagnosticUnderlineOk = { sp = palette.green, },
+            DiagnosticUnderlineWarn = { sp = palette.yellow, },
+            DiagnosticVirtualTextError = { fg = palette.red, bg = palette.red_background, },
+            DiagnosticVirtualTextHint = { fg = palette.purple, bg = palette.purple_background, },
+            DiagnosticVirtualTextInfo = { fg = palette.cyan, bg = palette.cyan_background, },
+            DiagnosticVirtualTextOk = { fg = palette.green, bg = palette.green_background, },
+            DiagnosticVirtualTextWarn = { fg = palette.yellow, bg = palette.yellow_background, },
+            DiagnosticWarn = { fg = palette.yellow, },
         },
         editor = {
-            CurSearch    = { link = "IncSearch" },
-            Cursor       = { fg = night_palette.text, bg = night_palette.pink },
-            CursorColumn = { link = "CursorLine" },
-            CursorIM     = { link = "Cursor" },
-            CursorLine   = { bg = night_palette.highlight_low },
-            CursorLineNr = { fg = night_palette.pink, bold = true },
-            DiffAdd      = { bg = night_palette.green_background, },
-            DiffChange   = { bg = night_palette.cyan_background, },
-            DiffDelete   = { bg = night_palette.red_background, },
-            DiffText     = { bg = c.saturate(night_palette.cyan_background, 10), },
-            Directory    = { fg = night_palette.yellow, },
+            CurSearch    = { link = "IncSearch", },
+            Cursor       = { fg = palette.text, bg = palette.pink, },
+            CursorColumn = { link = "CursorLine", },
+            CursorIM     = { link = "Cursor", },
+            CursorLine   = { bg = palette.highlight_low, },
+            CursorLineNr = { fg = palette.pink, },
+            DiffAdd      = { bg = palette.green_background, },
+            DiffChange   = { bg = palette.cyan_background, },
+            DiffDelete   = { bg = palette.red_background, },
+            DiffText     = { bg = c.saturate(palette.cyan_background, 10), },
+            Directory    = { fg = palette.yellow, },
             EndOfBuffer  = { fg = whitespace_text_color, },
-            ErrorMsg     = { fg = night_palette.red, },
-            FoldColumn   = { fg = night_palette.subtle },
-            IncSearch    = { fg = night_palette.text, bg = selection_background_color },
-            LineNr       = { fg = night_palette.subtle },
-            MatchParen   = { fg = night_palette.pink, bold = true },
-            MoreMsg      = { fg = night_palette.cyan, },
+            ErrorMsg     = { fg = palette.red, },
+            FoldColumn   = { fg = palette.subtle, },
+            IncSearch    = { fg = palette.text, bg = selection_background_color, },
+            LineNr       = { fg = palette.subtle, },
+            MatchParen   = { fg = palette.pink, bold = true, },
+            ModeMsg      = { link = "MoreMsg", },
+            MoreMsg      = { fg = palette.pink, },
             NonText      = { fg = whitespace_text_color, },
-            Normal       = { fg = night_palette.text, bg = night_palette.base, },
-            NormalFloat  = { link = "Normal" },
-            NormalNC     = { fg = night_palette.subtle, bg = night_palette.base, },
-            Pmenu        = { fg = night_palette.subtle, bg = night_palette.surface, },
-            PmenuSbar    = { link = "Pmenu" },
-            PmenuSel     = { fg = night_palette.text, bg = night_palette.overlay, },
-            PmenuThumb   = { bg = night_palette.overlay, },
-            QuickFixLine = { link = "CursorLine" },
-            Search       = { fg = night_palette.text, bg = night_palette.highlight_medium },
-            SignColumn   = { fg = night_palette.subtle },
-            SignColumnSB = { link = "SignColumn" },
-            SpellBad     = { sp = night_palette.red, undercurl = true },
-            SpellCap     = { sp = night_palette.yellow, undercurl = true },
-            SpellLocal   = { sp = night_palette.purple, undercurl = true },
-            SpellRare    = { sp = night_palette.purple, undercurl = true },
-            StatusLine   = { fg = night_palette.text, bg = statusline_background_color },
-            StatusLineNC = { fg = night_palette.text, bg = statusline_background_color },
-            Title        = { fg = night_palette.text, bold = true },
+            Normal       = { fg = palette.text, bg = palette.base, },
+            NormalFloat  = { link = "Normal", },
+            NormalNC     = { fg = palette.subtle, bg = palette.base, },
+            Pmenu        = { fg = palette.subtle, bg = palette.surface, },
+            PmenuSbar    = { link = "Pmenu", },
+            PmenuSel     = { fg = palette.text, bg = palette.overlay, },
+            PmenuThumb   = { bg = palette.overlay, },
+            QuickFixLine = { link = "CursorLine", },
+            Search       = { fg = palette.text, bg = palette.highlight_medium, },
+            SignColumn   = { fg = palette.subtle, },
+            SignColumnSB = { link = "SignColumn", },
+            SpellBad     = { sp = palette.red, undercurl = true, },
+            SpellCap     = { sp = palette.yellow, undercurl = true, },
+            SpellLocal   = { sp = palette.purple, undercurl = true, },
+            SpellRare    = { sp = palette.purple, undercurl = true, },
+            StatusLine   = { fg = palette.text, bg = statusline_background_color, },
+            StatusLineNC = { fg = palette.text, bg = statusline_background_color, },
+            Title        = { fg = palette.text, bold = true, },
             VertSplit    = { link = "WinSeparator", },
             Visual       = { bg = selection_background_color, },
-            VisualNOS    = { link = "Visual" },
-            WarningMsg   = { fg = night_palette.yellow },
+            VisualNOS    = { link = "Visual", },
+            WarningMsg   = { fg = palette.yellow, },
             Whitespace   = { fg = whitespace_text_color, },
             WinSeparator = { fg = separator_color, },
-            lCursor      = { link = "Cursor" },
+            lCursor      = { link = "Cursor", },
         },
         folds = {
-            Folded = { bg = night_palette.surface, },
+            Folded = { bg = palette.surface, },
         },
         gitsigns = {
-            GitSignsAdd = { fg = night_palette.green, },
-            GitSignsAddInline = { bg = night_palette.green_background, },
-            GitSignsAddLn = { bg = night_palette.green_background, },
+            GitSignsAdd = { fg = palette.green, },
+            GitSignsAddInline = { bg = palette.green_background, },
+            GitSignsAddLn = { bg = palette.green_background, },
             GitSignsAddLnInline = { link = "GitSignsAddLn", },
             GitSignsAddNr = { link = "GitSignsAdd", },
             GitSignsAddPreview = { link = "GitSignsAddLnInline", },
-            GitSignsChange = { fg = night_palette.cyan, },
-            GitSignsChangeInline = { bg = night_palette.cyan_background, },
-            GitSignsChangeLn = { bg = night_palette.cyan_background, },
+            GitSignsChange = { fg = palette.cyan, },
+            GitSignsChangeInline = { bg = palette.cyan_background, },
+            GitSignsChangeLn = { bg = palette.cyan_background, },
             GitSignsChangeLnInline = { link = "GitSignsChangeLn", },
             GitSignsChangeNr = { link = "GitSignsChange", },
-            GitSignsDelete = { fg = night_palette.red, },
-            GitSignsDeleteInline = { bg = night_palette.red_background, },
-            GitSignsDeleteLn = { bg = night_palette.red_background, },
+            GitSignsDelete = { fg = palette.red, },
+            GitSignsDeleteInline = { bg = palette.red_background, },
+            GitSignsDeleteLn = { bg = palette.red_background, },
             GitSignsDeleteLnInline = { link = "GitSignsDeleteLn", },
             GitSignsDeleteNr = { link = "GitSignsDelete", },
             GitSignsDeletePreview = { link = "GitSignsDeleteLnInline", },
-            GitSignsUntracked = { fg = night_palette.yellow, },
-            GitSignsUntrackedInline = { bg = night_palette.yellow_background, },
-            GitSignsUntrackedLn = { bg = night_palette.yellow_background, },
+            GitSignsUntracked = { fg = palette.yellow, },
+            GitSignsUntrackedInline = { bg = palette.yellow_background, },
+            GitSignsUntrackedLn = { bg = palette.yellow_background, },
             GitSignsUntrackedLnInline = { link = "GitSignsUntrackedLn", },
             GitSignsUntrackedNr = { link = "GitSignsUntracked", },
         },
         indent_blankline = {
             IblIndent = { fg = whitespace_text_color, },
             IblWhitespace = { fg = whitespace_text_color, },
-            IblScope = { fg = night_palette.pink, },
+            IblScope = { fg = palette.pink, },
         },
         nvim_cmp = {
-            CmpItemAbbrDeprecated = { bg = "NONE", strikethrough = true, fg = night_palette.subtle },
-            CmpItemAbbrMatch = { bg = selection_background_color, fg = selection_text_color },
-            CmpItemAbbrMatchFuzzy = { link = "CmpIntemAbbrMatch" },
-            CmpItemKindFunction = { bg = "NONE", fg = function_text_color, },
-            CmpItemKindInterface = { bg = "NONE", fg = type_text_color, },
-            CmpItemKindKeyword = { bg = "NONE", fg = keyword_text_color, },
-            CmpItemKindMethod = { link = "CmpItemKindFunction" },
-            CmpItemKindProperty = { link = "CmpItemKindKeyword" },
-            CmpItemKindText = { link = "CmpItemKindVariable" },
-            CmpItemKindUnit = { link = "CmpItemKindKeyword" },
-            CmpItemKindVariable = { bg = "NONE", fg = variable_text_color, },
+            CmpItemAbbr = { fg = palette.text, },
+            CmpItemAbbrDeprecated = { strikethrough = true, fg = palette.subtle, },
+            CmpItemAbbrMatch = { bg = selection_background_color, fg = selection_text_color, },
+            CmpItemAbbrMatchFuzzy = { bg = selection_background_color, fg = selection_text_color, },
+            CmpItemKind = { fg = palette.text, },
+            CmpItemKindClass = { fg = type_text_color, },
+            CmpItemKindConstant = { fg = constant_text_color, },
+            CmpItemKindConstructor = { link = "CmpItemKindFunction", },
+            CmpItemKindEnum = { link = "CmpItemKindClass", },
+            CmpItemKindEnumMember = { link = "CmpItemKindConstant", },
+            CmpItemKindField = { link = "CmpItemKindProperty", },
+            CmpItemKindFile = { link = "CmpItemKindFolder", },
+            CmpItemKindFolder = { fg = palette.yellow, },
+            CmpItemKindFunction = { fg = function_text_color, },
+            CmpItemKindInterface = { link = "CmpItemKindClass", },
+            CmpItemKindKeyword = { fg = keyword_text_color, },
+            CmpItemKindMethod = { link = "CmpItemKindFunction", },
+            CmpItemKindOperator = { fg = operator_text_color, },
+            CmpItemKindProperty = { fg = property_text_color, },
+            CmpItemKindSnippet = { fg = palette.red, },
+            CmpItemKindStruct = { link = "CmpItemKindClass", },
+            CmpItemKindText = { fg = palette.subtle, },
+            CmpItemKindUnit = { link = "CmpItemKindKeyword", },
+            CmpItemKindVariable = { fg = variable_text_color, },
         },
         nvim_ufo = {
-            UfoFoldedBg = { bg = night_palette.surface, },
+            UfoFoldedBg = { bg = palette.surface, },
         },
         syntax = {
-            Bold          = { bold = true },
-            Boolean       = { link = "Number" },
-            Character     = { link = "String" },
-            Comment       = { fg = comment_text_color },
-            Conditional   = { link = "Keyword" },
-            Constant      = { fg = constant_text_color },
-            Define        = { link = "PreProc" },
-            Delimiter     = { fg = punctuation_text_color },
-            Error         = { fg = night_palette.red, },
-            Exception     = { link = "Keyword" },
-            Float         = { link = "Number" },
-            Function      = { fg = night_palette.cyan },
-            Identifier    = { fg = night_palette.text },
-            Include       = { link = "PreProc" },
-            Italic        = { italic = true },
-            Keyword       = { fg = night_palette.pink },
-            Label         = { link = "Keyword" },
-            Macro         = { link = "PreProc" },
-            Number        = { fg = night_palette.purple },
-            Operator      = { fg = night_palette.subtle },
-            PreCondit     = { link = "PreProc" },
-            PreProc       = { fg = night_palette.purple },
-            Repeat        = { link = "Keyword" },
-            Special       = { fg = night_palette.subtle },
-            SpecialChar   = { fg = night_palette.subtle },
-            Statement     = { link = "Keyword" },
-            StorageClass  = { link = "Type" },
+            Bold          = { bold = true, },
+            Boolean       = { link = "Number", },
+            Character     = { link = "String", },
+            Comment       = { fg = comment_text_color, },
+            Conditional   = { link = "Keyword", },
+            Constant      = { fg = constant_text_color, },
+            Define        = { link = "PreProc", },
+            Delimiter     = { fg = punctuation_text_color, },
+            Error         = { fg = palette.red, },
+            Exception     = { link = "Keyword", },
+            Float         = { link = "Number", },
+            Function      = { fg = palette.cyan, },
+            Identifier    = { fg = palette.text, },
+            Include       = { link = "PreProc", },
+            Italic        = { italic = true, },
+            Keyword       = { fg = palette.pink, },
+            Label         = { link = "Keyword", },
+            Macro         = { link = "PreProc", },
+            Number        = { fg = palette.purple, },
+            Operator      = { fg = palette.subtle, },
+            PreCondit     = { link = "PreProc", },
+            PreProc       = { fg = palette.purple, },
+            Repeat        = { link = "Keyword", },
+            Special       = { fg = palette.subtle, },
+            SpecialChar   = { fg = palette.subtle, },
+            Statement     = { link = "Keyword", },
+            StorageClass  = { link = "Type", },
             String        = { link = "@string", },
-            Structure     = { link = "Keyword" },
-            Tag           = { fg = night_palette.pink },
-            Todo          = { fg = night_palette.yellow, },
-            Type          = { fg = night_palette.yellow },
-            Typedef       = { link = "Type" },
-            Underlined    = { underline = true },
-            diffAdded     = { fg = night_palette.green },
-            diffChanged   = { fg = night_palette.cyan },
-            diffFile      = { fg = night_palette.purple },
-            diffIndexLine = { fg = night_palette.green },
-            diffLine      = { fg = night_palette.pink },
-            diffNewFile   = { fg = night_palette.cyan },
-            diffOldFile   = { fg = night_palette.yellow },
-            diffRemoved   = { fg = night_palette.red },
+            Structure     = { link = "Keyword", },
+            Tag           = { fg = palette.pink, },
+            Todo          = { fg = palette.yellow, },
+            Type          = { fg = palette.yellow, },
+            Typedef       = { link = "Type", },
+            Underlined    = { underline = true, },
+            diffAdded     = { fg = palette.green, },
+            diffChanged   = { fg = palette.cyan, },
+            diffFile      = { fg = palette.purple, },
+            diffIndexLine = { fg = palette.green, },
+            diffLine      = { fg = palette.pink, },
+            diffNewFile   = { fg = palette.cyan, },
+            diffOldFile   = { fg = palette.yellow, },
+            diffRemoved   = { fg = palette.red, },
         },
         telescope = {
-            TelescopeBorder = { fg = night_palette.highlight_high, },
-            TelescopeNormal = { fg = night_palette.text, },
-            TelescopePromptCounter = { fg = night_palette.yellow, },
-            TelescopeTitle = { fg = night_palette.subtle, },
+            TelescopeBorder = { fg = palette.highlight_high, },
+            TelescopeNormal = { fg = palette.text, },
+            TelescopePromptCounter = { fg = palette.yellow, },
+            TelescopeTitle = { fg = palette.subtle, },
         },
         treesitter = {
             ["@attribute"] = { fg = metadata_text_color, },
@@ -193,12 +206,12 @@ local function night_highlights()
             ["@character"] = { link = "@string", },
             ["@character.special"] = { link = "@character", },
             ["@comment"] = { fg = comment_text_color, },
-            ["@comment.documentation"] = { link = "@comment", },
-            ["@comment.error"] = { fg = night_palette.red, },
-            ["@comment.info"] = { fg = night_palette.cyan, },
-            ["@comment.note"] = { fg = night_palette.purple, },
-            ["@comment.todo"] = { fg = night_palette.yellow, },
-            ["@comment.warning"] = { fg = night_palette.yellow, },
+            ["@comment.documentation"] = { fg = palette.green, },
+            ["@comment.error"] = { fg = palette.red, },
+            ["@comment.info"] = { fg = palette.cyan, },
+            ["@comment.note"] = { fg = palette.purple, },
+            ["@comment.todo"] = { fg = palette.yellow, },
+            ["@comment.warning"] = { fg = palette.yellow, },
             ["@constant"] = { fg = constant_text_color, },
             ["@constant.builtin"] = { link = "@constant" },
             ["@constant.macro"] = { link = "@constant" },
@@ -262,29 +275,30 @@ local function night_highlights()
             ["@variable.parameter.builtin"] = { link = "@variable", },
         },
         treesitter_context = {
-            TreesitterContext = { bg = night_palette.surface, },
-            TreesitterContextLineNumber = { bg = night_palette.surface, },
+            TreesitterContext = { bg = palette.surface, },
+            TreesitterContextLineNumber = { bg = palette.surface, },
         },
         terminal = {
-            black = c.lighten(night_palette.base, 10),
-            black_bright = c.lighten(night_palette.base, 20),
-            red = night_palette.red,
-            red_bright = c.lighten(night_palette.red, 15),
-            green = night_palette.green,
-            green_bright = c.lighten(night_palette.green, 15),
-            yellow = night_palette.yellow,
-            yellow_bright = c.lighten(night_palette.yellow, 15),
-            blue = night_palette.purple,
-            blue_bright = c.lighten(night_palette.purple, 15),
-            magenta = night_palette.pink,
-            magenta_bright = c.lighten(night_palette.pink, 15),
-            cyan = night_palette.cyan,
-            cyan_bright = c.lighten(night_palette.cyan, 15),
-            white = night_palette.subtle,
-            white_bright = c.lighten(night_palette.subtle, 15),
+            black = c.lighten(palette.base, 10),
+            black_bright = c.lighten(palette.base, 20),
+            red = palette.red,
+            red_bright = c.lighten(palette.red, 15),
+            green = palette.green,
+            green_bright = c.lighten(palette.green, 15),
+            yellow = palette.yellow,
+            yellow_bright = c.lighten(palette.yellow, 15),
+            blue = palette.purple,
+            blue_bright = c.lighten(palette.purple, 15),
+            magenta = palette.pink,
+            magenta_bright = c.lighten(palette.pink, 15),
+            cyan = palette.cyan,
+            cyan_bright = c.lighten(palette.cyan, 15),
+            white = palette.subtle,
+            white_bright = c.lighten(palette.subtle, 15),
         },
     }
 end
+
 
 local function set_highlights(highlight)
     for group, hl in pairs(highlight) do
@@ -318,25 +332,26 @@ local function set_terminal_colors(terminal_colors)
     vim.g.terminal_color_15 = c.hsl_to_hex(terminal_colors.white_bright)
 end
 
-local function set_all_highlights(highlights)
-    set_highlights(highlights.diagnostics)
-    set_highlights(highlights.editor)
-    set_highlights(highlights.folds)
-    set_highlights(highlights.gitsigns)
-    set_highlights(highlights.indent_blankline)
-    set_highlights(highlights.nvim_cmp)
-    set_highlights(highlights.nvim_ufo)
-    set_highlights(highlights.syntax)
-    set_highlights(highlights.telescope)
-    set_highlights(highlights.treesitter)
-    set_highlights(highlights.treesitter_context)
-    set_terminal_colors(highlights.terminal)
+local function set_all_highlights(hl)
+    set_highlights(hl.diagnostics)
+    set_highlights(hl.editor)
+    set_highlights(hl.folds)
+    set_highlights(hl.gitsigns)
+    set_highlights(hl.indent_blankline)
+    set_highlights(hl.nvim_cmp)
+    set_highlights(hl.nvim_ufo)
+    set_highlights(hl.syntax)
+    set_highlights(hl.telescope)
+    set_highlights(hl.treesitter)
+    set_highlights(hl.treesitter_context)
+    set_terminal_colors(hl.terminal)
 end
 
 local M = {}
 
-function M.load()
-    set_all_highlights(night_highlights())
+---@param theme string
+function M.load(theme)
+    set_all_highlights(highlights(require("sakura.palettes.sakura-" .. theme)))
 end
 
 return M

@@ -1,36 +1,36 @@
 local c = require("sakura.color-utils")
-local night_palette = require("sakura.palettes.sakura-night")
+local palette = require("sakura.palettes.sakura-night")
 
 local theme = {
     normal = {
-        a = { bg = night_palette.pink, fg = night_palette.overlay, gui = "bold", },
-        b = { bg = night_palette.surface, fg = night_palette.pink, },
-        c = { bg = night_palette.base, fg = night_palette.text, },
+        a = { bg = palette.pink, fg = palette.overlay, gui = "bold", },
+        b = { bg = palette.surface, fg = palette.pink, },
+        c = { bg = palette.base, fg = palette.text, },
     },
     insert = {
-        a = { bg = night_palette.yellow, fg = night_palette.overlay, gui = "bold", },
-        b = { bg = night_palette.surface, fg = night_palette.yellow, },
-        c = { bg = night_palette.base, fg = night_palette.text, },
+        a = { bg = palette.yellow, fg = palette.overlay, gui = "bold", },
+        b = { bg = palette.surface, fg = palette.yellow, },
+        c = { bg = palette.base, fg = palette.text, },
     },
     visual = {
-        a = { bg = night_palette.cyan, fg = night_palette.overlay, gui = "bold", },
-        b = { bg = night_palette.surface, fg = night_palette.cyan, },
-        c = { bg = night_palette.base, fg = night_palette.text, },
+        a = { bg = palette.cyan, fg = palette.overlay, gui = "bold", },
+        b = { bg = palette.surface, fg = palette.cyan, },
+        c = { bg = palette.base, fg = palette.text, },
     },
     replace = {
-        a = { bg = night_palette.red, fg = night_palette.overlay, gui = "bold", },
-        b = { bg = night_palette.surface, fg = night_palette.red, },
-        c = { bg = night_palette.base, fg = night_palette.text, },
+        a = { bg = palette.red, fg = palette.overlay, gui = "bold", },
+        b = { bg = palette.surface, fg = palette.red, },
+        c = { bg = palette.base, fg = palette.text, },
     },
     command = {
-        a = { bg = night_palette.green, fg = night_palette.overlay, gui = "bold", },
-        b = { bg = night_palette.surface, fg = night_palette.green, },
-        c = { bg = night_palette.base, fg = night_palette.text, },
+        a = { bg = palette.green, fg = palette.overlay, gui = "bold", },
+        b = { bg = palette.surface, fg = palette.green, },
+        c = { bg = palette.base, fg = palette.text, },
     },
     inactive = {
-        a = { bg = night_palette.overlay, fg = night_palette.subtle, gui = "bold", },
-        b = { bg = night_palette.surface, fg = night_palette.subtle, },
-        c = { bg = night_palette.base, fg = night_palette.subtle, },
+        a = { bg = palette.overlay, fg = palette.subtle, gui = "bold", },
+        b = { bg = palette.surface, fg = palette.subtle, },
+        c = { bg = palette.base, fg = palette.subtle, },
     },
 }
 
