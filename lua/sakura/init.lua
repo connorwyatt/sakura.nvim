@@ -1,11 +1,12 @@
 local c = require("sakura.color-utils")
 
+local transparent = "NONE"
+
 local function highlights(palette)
     local selection_background_color = palette.highlight_medium
     local selection_text_color = palette.text
 
     local separator_color = palette.highlight_high
-    local statusline_background_color = palette.surface
 
     local variable_text_color = palette.text
     local parameter_text_color = palette.purple
@@ -29,11 +30,11 @@ local function highlights(palette)
             DiagnosticHint = { fg = palette.purple, },
             DiagnosticInfo = { fg = palette.cyan, },
             DiagnosticOk = { fg = palette.green, },
-            DiagnosticUnderlineError = { sp = palette.red, },
-            DiagnosticUnderlineHint = { sp = palette.purple, },
-            DiagnosticUnderlineInfo = { sp = palette.cyan, },
-            DiagnosticUnderlineOk = { sp = palette.green, },
-            DiagnosticUnderlineWarn = { sp = palette.yellow, },
+            DiagnosticUnderlineError = { sp = palette.red, undercurl = true, },
+            DiagnosticUnderlineHint = { sp = palette.purple, undercurl = true, },
+            DiagnosticUnderlineInfo = { sp = palette.cyan, undercurl = true, },
+            DiagnosticUnderlineOk = { sp = palette.green, undercurl = true, },
+            DiagnosticUnderlineWarn = { sp = palette.yellow, undercurl = true, },
             DiagnosticVirtualTextError = { fg = palette.red, bg = palette.red_background, },
             DiagnosticVirtualTextHint = { fg = palette.purple, bg = palette.purple_background, },
             DiagnosticVirtualTextInfo = { fg = palette.cyan, bg = palette.cyan_background, },
@@ -61,7 +62,7 @@ local function highlights(palette)
             MatchParen   = { fg = palette.pink, bold = true, },
             ModeMsg      = { link = "MoreMsg", },
             MoreMsg      = { fg = palette.pink, },
-            NonText      = { fg = whitespace_text_color, },
+            NonText      = { fg = palette.subtle, },
             Normal       = { fg = palette.text, bg = palette.base, },
             NormalFloat  = { link = "Normal", },
             NormalNC     = { fg = palette.subtle, bg = palette.base, },
@@ -77,8 +78,6 @@ local function highlights(palette)
             SpellCap     = { sp = palette.yellow, undercurl = true, },
             SpellLocal   = { sp = palette.purple, undercurl = true, },
             SpellRare    = { sp = palette.purple, undercurl = true, },
-            StatusLine   = { fg = palette.text, bg = statusline_background_color, },
-            StatusLineNC = { fg = palette.text, bg = statusline_background_color, },
             Title        = { fg = palette.text, bold = true, },
             VertSplit    = { link = "WinSeparator", },
             Visual       = { bg = selection_background_color, },
@@ -103,6 +102,7 @@ local function highlights(palette)
             GitSignsChangeLn = { bg = palette.cyan_background, },
             GitSignsChangeLnInline = { link = "GitSignsChangeLn", },
             GitSignsChangeNr = { link = "GitSignsChange", },
+            GitSignsCurrentLineBlame = { fg = palette.subtle, },
             GitSignsDelete = { fg = palette.red, },
             GitSignsDeleteInline = { bg = palette.red_background, },
             GitSignsDeleteLn = { bg = palette.red_background, },
@@ -148,6 +148,34 @@ local function highlights(palette)
         },
         nvim_ufo = {
             UfoFoldedBg = { bg = palette.surface, },
+        },
+        statusline = {
+            StatusLine                  = { fg = palette.text, bg = palette.surface, },
+            StatusLineNC                = { fg = palette.text, bg = palette.surface, },
+            StatusLineDiagnostic        = { link = "StatusLine", },
+            StatusLineDiagnosticError   = { link = "DiagnosticError", },
+            StatusLineDiagnosticWarning = { link = "DiagnosticWarn", },
+            StatusLineDiagnosticHint    = { link = "DiagnosticHint", },
+            StatusLineDiagnosticInfo    = { link = "DiagnosticInfo", },
+            StatusLineModeNormal        = { bg = palette.pink, fg = palette.overlay, bold = true, },
+            StatusLineModeInsert        = { bg = palette.yellow, fg = palette.overlay, bold = true, },
+            StatusLineModeVisual        = { bg = palette.cyan, fg = palette.overlay, bold = true, },
+            StatusLineModeSelect        = { link = "StatusLineModeVisual", },
+            StatusLineModeReplace       = { bg = palette.red, fg = palette.overlay, bold = true, },
+            StatusLineModeCommand       = { bg = palette.green, fg = palette.overlay, bold = true, },
+            StatusLineModeTerminal      = { bg = palette.purple, fg = palette.overlay, bold = true, },
+            StatusLineFileName          = { bg = palette.overlay, },
+            StatusLineFileDirectory     = { fg = palette.subtle, },
+            StatusLineFileBaseName      = { fg = palette.text, },
+            StatusLineFileModified      = { fg = palette.green, },
+            StatusLineFileReadonly      = { fg = palette.yellow, },
+            StatusLineFileEncoding      = { bg = palette.overlay, },
+            StatusLineGit               = { link = "StatusLine", },
+            StatusLineGitOn             = { fg = palette.subtle, },
+            StatusLineGitBranch         = { fg = palette.pink, },
+            StatusLineGitAdded          = { fg = palette.green, },
+            StatusLineGitChanged        = { fg = palette.cyan, },
+            StatusLineGitRemoved        = { fg = palette.red, },
         },
         syntax = {
             Bold          = { bold = true, },
@@ -197,7 +225,7 @@ local function highlights(palette)
             TelescopeBorder = { fg = palette.highlight_high, },
             TelescopeNormal = { fg = palette.text, },
             TelescopePromptCounter = { fg = palette.yellow, },
-            TelescopeTitle = { fg = palette.subtle, },
+            TelescopeTitle = { fg = palette.text, },
         },
         treesitter = {
             ["@attribute"] = { fg = metadata_text_color, },
@@ -341,6 +369,7 @@ local function set_all_highlights(hl)
     set_highlights(hl.nvim_cmp)
     set_highlights(hl.nvim_ufo)
     set_highlights(hl.syntax)
+    set_highlights(hl.statusline)
     set_highlights(hl.telescope)
     set_highlights(hl.treesitter)
     set_highlights(hl.treesitter_context)
