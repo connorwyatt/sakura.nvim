@@ -2,17 +2,23 @@ local color_palette = require("sakura.colors")
 local c = require("sakura.color-utils")
 
 local base = { 230, 30, 17, }
-local text = { 323, 5, 83, }
+local text = { 230, 5, 83, }
+
+local white = "#ffffff"
+
+local pink_background = c.desaturate(c.darken(color_palette.pink, 35), 25)
 
 return {
+    is_dark = true,
     base = base,
     surface = c.lighten(base, 5),
     overlay = c.lighten(base, 10),
     text = text,
-    subtle = c.desaturate(c.blend(text, 0.6, base), 5),
-    muted = c.desaturate(c.blend(text, 0.2, base), 5),
+    subtle = c.saturate(c.darken(text, 25), 10),
+    muted = c.saturate(c.darken(text, 55), 20),
+    white = white,
     pink = color_palette.pink,
-    pink_background = c.desaturate(c.darken(color_palette.pink, 35), 25),
+    pink_background = pink_background,
     yellow = color_palette.yellow,
     yellow_background = c.desaturate(c.darken(color_palette.yellow, 35), 25),
     green = color_palette.green,
@@ -23,7 +29,9 @@ return {
     purple_background = c.desaturate(c.darken(color_palette.purple, 35), 25),
     red = color_palette.red,
     red_background = c.desaturate(c.darken(color_palette.red, 40), 30),
-    highlight_low = c.saturate(c.lighten(base, 5), 5),
-    highlight_medium = c.saturate(c.lighten(base, 10), 10),
-    highlight_high = c.saturate(c.lighten(base, 25), 10),
+    highlight_low = c.lighten(base, 5),
+    highlight_medium = c.lighten(base, 10),
+    highlight_high = c.desaturate(c.lighten(base, 25), 15),
+    cursor_background = color_palette.pink,
+    cursor_text = white,
 }

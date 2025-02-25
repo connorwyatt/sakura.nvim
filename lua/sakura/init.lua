@@ -1,7 +1,5 @@
 local c = require("sakura.color-utils")
 
-local transparent = "NONE"
-
 local function highlights(palette)
     local selection_background_color = palette.highlight_medium
     local selection_text_color = palette.text
@@ -24,6 +22,15 @@ local function highlights(palette)
     local punctuation_text_color = palette.subtle
     local whitespace_text_color = palette.muted
 
+    local git_added_text_color = palette.green
+    local git_added_background_color = palette.green_background
+    local git_changed_text_color = palette.purple
+    local git_changed_background_color = palette.purple_background
+    local git_removed_text_color = palette.red
+    local git_removed_background_color = palette.red_background
+    local git_untracked_text_color = palette.yellow
+    local git_untracked_background_color = palette.yellow_background
+
     return {
         diagnostics = {
             DiagnosticError = { fg = palette.red, },
@@ -44,15 +51,15 @@ local function highlights(palette)
         },
         editor = {
             CurSearch    = { link = "IncSearch", },
-            Cursor       = { fg = palette.text, bg = palette.pink, },
+            Cursor       = { fg = palette.cursor_text, bg = palette.cursor_background, },
             CursorColumn = { link = "CursorLine", },
             CursorIM     = { link = "Cursor", },
             CursorLine   = { bg = palette.highlight_low, },
             CursorLineNr = { fg = palette.pink, },
-            DiffAdd      = { bg = palette.green_background, },
-            DiffChange   = { bg = palette.cyan_background, },
-            DiffDelete   = { bg = palette.red_background, },
-            DiffText     = { bg = c.saturate(palette.cyan_background, 10), },
+            DiffAdd      = { bg = git_added_background_color, },
+            DiffChange   = { bg = git_changed_background_color, },
+            DiffDelete   = { bg = git_removed_background_color, },
+            DiffText     = { bg = c.saturate(git_changed_text_color, 10), },
             Directory    = { fg = palette.yellow, },
             EndOfBuffer  = { fg = whitespace_text_color, },
             ErrorMsg     = { fg = palette.red, },
@@ -70,6 +77,7 @@ local function highlights(palette)
             PmenuSbar    = { link = "Pmenu", },
             PmenuSel     = { fg = palette.text, bg = palette.overlay, },
             PmenuThumb   = { bg = palette.overlay, },
+            Question     = { link = "MoreMsg", },
             QuickFixLine = { link = "CursorLine", },
             Search       = { fg = palette.text, bg = palette.highlight_medium, },
             SignColumn   = { fg = palette.subtle, },
@@ -91,27 +99,27 @@ local function highlights(palette)
             Folded = { bg = palette.surface, },
         },
         gitsigns = {
-            GitSignsAdd = { fg = palette.green, },
-            GitSignsAddInline = { bg = palette.green_background, },
-            GitSignsAddLn = { bg = palette.green_background, },
+            GitSignsAdd = { fg = git_added_text_color, },
+            GitSignsAddInline = { bg = git_added_background_color, },
+            GitSignsAddLn = { bg = git_added_background_color, },
             GitSignsAddLnInline = { link = "GitSignsAddLn", },
             GitSignsAddNr = { link = "GitSignsAdd", },
             GitSignsAddPreview = { link = "GitSignsAddLnInline", },
-            GitSignsChange = { fg = palette.cyan, },
-            GitSignsChangeInline = { bg = palette.cyan_background, },
-            GitSignsChangeLn = { bg = palette.cyan_background, },
+            GitSignsChange = { fg = git_changed_text_color, },
+            GitSignsChangeInline = { bg = git_changed_background_color, },
+            GitSignsChangeLn = { bg = git_changed_background_color, },
             GitSignsChangeLnInline = { link = "GitSignsChangeLn", },
             GitSignsChangeNr = { link = "GitSignsChange", },
             GitSignsCurrentLineBlame = { fg = palette.subtle, },
-            GitSignsDelete = { fg = palette.red, },
-            GitSignsDeleteInline = { bg = palette.red_background, },
-            GitSignsDeleteLn = { bg = palette.red_background, },
+            GitSignsDelete = { fg = git_removed_text_color, },
+            GitSignsDeleteInline = { bg = git_removed_background_color, },
+            GitSignsDeleteLn = { bg = git_removed_background_color, },
             GitSignsDeleteLnInline = { link = "GitSignsDeleteLn", },
             GitSignsDeleteNr = { link = "GitSignsDelete", },
             GitSignsDeletePreview = { link = "GitSignsDeleteLnInline", },
-            GitSignsUntracked = { fg = palette.yellow, },
-            GitSignsUntrackedInline = { bg = palette.yellow_background, },
-            GitSignsUntrackedLn = { bg = palette.yellow_background, },
+            GitSignsUntracked = { fg = git_untracked_text_color, },
+            GitSignsUntrackedInline = { bg = git_untracked_background_color, },
+            GitSignsUntrackedLn = { bg = git_untracked_background_color, },
             GitSignsUntrackedLnInline = { link = "GitSignsUntrackedLn", },
             GitSignsUntrackedNr = { link = "GitSignsUntracked", },
         },
@@ -157,13 +165,13 @@ local function highlights(palette)
             StatusLineDiagnosticWarning = { link = "DiagnosticWarn", },
             StatusLineDiagnosticHint    = { link = "DiagnosticHint", },
             StatusLineDiagnosticInfo    = { link = "DiagnosticInfo", },
-            StatusLineModeNormal        = { bg = palette.pink, fg = palette.overlay, bold = true, },
-            StatusLineModeInsert        = { bg = palette.yellow, fg = palette.overlay, bold = true, },
-            StatusLineModeVisual        = { bg = palette.cyan, fg = palette.overlay, bold = true, },
+            StatusLineModeNormal        = { bg = palette.pink, fg = palette.white, bold = true, },
+            StatusLineModeInsert        = { bg = palette.yellow, fg = palette.white, bold = true, },
+            StatusLineModeVisual        = { bg = palette.cyan, fg = palette.white, bold = true, },
             StatusLineModeSelect        = { link = "StatusLineModeVisual", },
-            StatusLineModeReplace       = { bg = palette.red, fg = palette.overlay, bold = true, },
-            StatusLineModeCommand       = { bg = palette.green, fg = palette.overlay, bold = true, },
-            StatusLineModeTerminal      = { bg = palette.purple, fg = palette.overlay, bold = true, },
+            StatusLineModeReplace       = { bg = palette.red, fg = palette.white, bold = true, },
+            StatusLineModeCommand       = { bg = palette.green, fg = palette.white, bold = true, },
+            StatusLineModeTerminal      = { bg = palette.purple, fg = palette.white, bold = true, },
             StatusLineFileName          = { bg = palette.overlay, },
             StatusLineFileDirectory     = { fg = palette.subtle, },
             StatusLineFileBaseName      = { fg = palette.text, },
@@ -173,9 +181,9 @@ local function highlights(palette)
             StatusLineGit               = { link = "StatusLine", },
             StatusLineGitOn             = { fg = palette.subtle, },
             StatusLineGitBranch         = { fg = palette.pink, },
-            StatusLineGitAdded          = { fg = palette.green, },
-            StatusLineGitChanged        = { fg = palette.cyan, },
-            StatusLineGitRemoved        = { fg = palette.red, },
+            StatusLineGitAdded          = { fg = git_added_text_color, },
+            StatusLineGitChanged        = { fg = git_changed_text_color, },
+            StatusLineGitRemoved        = { fg = git_removed_text_color, },
         },
         syntax = {
             Bold          = { bold = true, },
@@ -212,14 +220,14 @@ local function highlights(palette)
             Type          = { fg = palette.yellow, },
             Typedef       = { link = "Type", },
             Underlined    = { underline = true, },
-            diffAdded     = { fg = palette.green, },
-            diffChanged   = { fg = palette.cyan, },
-            diffFile      = { fg = palette.purple, },
+            diffAdded     = { fg = git_added_text_color, },
+            diffChanged   = { fg = git_changed_text_color, },
+            diffFile      = { fg = palette.cyan, },
             diffIndexLine = { fg = palette.green, },
             diffLine      = { fg = palette.pink, },
-            diffNewFile   = { fg = palette.cyan, },
+            diffNewFile   = { fg = palette.purple, },
             diffOldFile   = { fg = palette.yellow, },
-            diffRemoved   = { fg = palette.red, },
+            diffRemoved   = { fg = git_removed_text_color, },
         },
         telescope = {
             TelescopeBorder = { fg = palette.highlight_high, },
@@ -306,7 +314,12 @@ local function highlights(palette)
             TreesitterContext = { bg = palette.surface, },
             TreesitterContextLineNumber = { bg = palette.surface, },
         },
-        terminal = {
+    }
+end
+
+local function terminal_highlights(palette)
+    if palette.is_dark then
+        return {
             black = c.lighten(palette.base, 10),
             black_bright = c.lighten(palette.base, 20),
             red = palette.red,
@@ -323,10 +336,28 @@ local function highlights(palette)
             cyan_bright = c.lighten(palette.cyan, 15),
             white = palette.subtle,
             white_bright = c.lighten(palette.subtle, 15),
-        },
-    }
+        }
+    else
+        return {
+            black = c.darken(palette.base, 10),
+            black_bright = c.darken(palette.base, 20),
+            red = palette.red,
+            red_bright = c.lighten(palette.red, 15),
+            green = palette.green,
+            green_bright = c.lighten(palette.green, 15),
+            yellow = palette.yellow,
+            yellow_bright = c.lighten(palette.yellow, 15),
+            blue = palette.purple,
+            blue_bright = c.lighten(palette.purple, 15),
+            magenta = palette.pink,
+            magenta_bright = c.lighten(palette.pink, 15),
+            cyan = palette.cyan,
+            cyan_bright = c.lighten(palette.cyan, 15),
+            white = palette.text,
+            white_bright = c.lighten(palette.text, 15),
+        }
+    end
 end
-
 
 local function set_highlights(highlight)
     for group, hl in pairs(highlight) do
@@ -360,27 +391,45 @@ local function set_terminal_colors(terminal_colors)
     vim.g.terminal_color_15 = c.hsl_to_hex(terminal_colors.white_bright)
 end
 
-local function set_all_highlights(hl)
-    set_highlights(hl.diagnostics)
-    set_highlights(hl.editor)
-    set_highlights(hl.folds)
-    set_highlights(hl.gitsigns)
-    set_highlights(hl.indent_blankline)
-    set_highlights(hl.nvim_cmp)
-    set_highlights(hl.nvim_ufo)
-    set_highlights(hl.syntax)
-    set_highlights(hl.statusline)
-    set_highlights(hl.telescope)
-    set_highlights(hl.treesitter)
-    set_highlights(hl.treesitter_context)
-    set_terminal_colors(hl.terminal)
+local function set_all_highlights(hl, terminal_hl)
+    for _, hls in pairs(hl) do
+        set_highlights(hls)
+    end
+    set_terminal_colors(terminal_hl)
 end
 
 local M = {}
 
 ---@param theme string
 function M.load(theme)
-    set_all_highlights(highlights(require("sakura.palettes.sakura-" .. theme)))
+    local palette = require("sakura.palettes.sakura-" .. theme)
+    local hl = highlights(palette)
+    local terminal_hl = terminal_highlights(palette)
+    set_all_highlights(hl, terminal_hl)
+
+    -- Primitive Ghostty theme generator
+    -- print("palette = 0=" .. c.hsl_to_hex(terminal_hl.black))
+    -- print("palette = 1=" .. c.hsl_to_hex(terminal_hl.red))
+    -- print("palette = 2=" .. c.hsl_to_hex(terminal_hl.green))
+    -- print("palette = 3=" .. c.hsl_to_hex(terminal_hl.yellow))
+    -- print("palette = 4=" .. c.hsl_to_hex(terminal_hl.blue))
+    -- print("palette = 5=" .. c.hsl_to_hex(terminal_hl.magenta))
+    -- print("palette = 6=" .. c.hsl_to_hex(terminal_hl.cyan))
+    -- print("palette = 7=" .. c.hsl_to_hex(terminal_hl.white))
+    -- print("palette = 8=" .. c.hsl_to_hex(terminal_hl.black_bright))
+    -- print("palette = 9=" .. c.hsl_to_hex(terminal_hl.red_bright))
+    -- print("palette = 10=" .. c.hsl_to_hex(terminal_hl.green_bright))
+    -- print("palette = 11=" .. c.hsl_to_hex(terminal_hl.yellow_bright))
+    -- print("palette = 12=" .. c.hsl_to_hex(terminal_hl.blue_bright))
+    -- print("palette = 13=" .. c.hsl_to_hex(terminal_hl.magenta_bright))
+    -- print("palette = 14=" .. c.hsl_to_hex(terminal_hl.cyan_bright))
+    -- print("palette = 15=" .. c.hsl_to_hex(terminal_hl.white_bright))
+    -- print("background=" .. c.hsl_to_hex(palette.base))
+    -- print("foreground=" .. c.hsl_to_hex(palette.text))
+    -- print("cursor-color=" .. hl.editor.Cursor.bg)
+    -- print("cursor-text=" .. hl.editor.Cursor.fg)
+    -- print("selection-background=" .. c.hsl_to_hex(terminal_hl.black))
+    -- print("selection-foreground=" .. c.hsl_to_hex(palette.text))
 end
 
 return M
