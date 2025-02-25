@@ -7,8 +7,8 @@ local text = { 323, 5, 40, }
 local white = "#ffffff"
 
 local pink = c.darken(color_palette.pink, 5)
-local pink_background = c.desaturate(c.lighten(pink, 28), 5)
-local yellow = c.saturate(color_palette.yellow, 10)
+local pink_background = c.desaturate(c.lighten(pink, 27), 5)
+local yellow = c.saturate(c.darken(color_palette.yellow, 10), 20)
 local green = c.darken(color_palette.green, 10)
 local cyan = color_palette.cyan
 local purple = c.darken(color_palette.purple, 5)
