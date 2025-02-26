@@ -26,7 +26,7 @@ return {
     pink = pink,
     pink_background = pink_background,
     yellow = yellow,
-    yellow_background = c.lighten(yellow, 30),
+    yellow_background = c.lighten(yellow, 37),
     green = green,
     green_background = c.lighten(green, 35),
     cyan = cyan,
