@@ -60,6 +60,8 @@ local function highlights(palette)
             BlinkCmpKindUnit = { link = "BlinkCmpKindKeyword", },
             BlinkCmpKindVariable = { fg = variable_text_color, },
             BlinkCmpGhostText = { fg = palette.muted, },
+            BlinkCmpSignatureHelp = { link = "NormalFloat", },
+            BlinkCmpSignatureHelpActiveParameter = { bg = selection_background_color, },
         },
         diagnostics = {
             DiagnosticError = { fg = palette.red, },
@@ -100,7 +102,7 @@ local function highlights(palette)
             MoreMsg      = { fg = palette.pink, },
             NonText      = { fg = palette.subtle, },
             Normal       = { fg = palette.text, bg = palette.base, },
-            NormalFloat  = { link = "Normal", },
+            NormalFloat  = { fg = palette.text, bg = palette.surface, },
             NormalNC     = { fg = palette.subtle, bg = palette.base, },
             Pmenu        = { fg = palette.subtle, bg = palette.surface, },
             PmenuSbar    = { link = "Pmenu", },
@@ -126,6 +128,10 @@ local function highlights(palette)
         },
         folds = {
             Folded = { bg = palette.surface, },
+        },
+        git = {
+            Added = { fg = git_added_text_color, },
+            Removed = { fg = git_removed_text_color, },
         },
         gitsigns = {
             GitSignsAdd = { fg = git_added_text_color, },
