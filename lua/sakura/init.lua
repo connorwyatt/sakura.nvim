@@ -24,8 +24,8 @@ local function highlights(palette)
 
     local git_added_text_color = palette.green
     local git_added_background_color = palette.green_background
-    local git_changed_text_color = palette.purple
-    local git_changed_background_color = palette.purple_background
+    local git_changed_text_color = palette.cyan
+    local git_changed_background_color = palette.cyan_background
     local git_removed_text_color = palette.red
     local git_removed_background_color = palette.red_background
     local git_untracked_text_color = palette.yellow
@@ -158,13 +158,12 @@ local function highlights(palette)
             GitSignsUntrackedLnInline = { link = "GitSignsUntrackedLn", },
             GitSignsUntrackedNr = { link = "GitSignsUntracked", },
         },
-        indent_blankline = {
-            IblIndent = { fg = whitespace_text_color, },
-            IblWhitespace = { fg = whitespace_text_color, },
-            IblScope = { fg = palette.pink, },
-        },
         nvim_ufo = {
             UfoFoldedBg = { bg = palette.surface, },
+        },
+        snacks = {
+            SnacksIndent = { fg = whitespace_text_color, },
+            SnacksIndentScope = { fg = palette.pink, },
         },
         statusline = {
             StatusLine                  = { fg = palette.text, bg = palette.surface, },
@@ -237,12 +236,6 @@ local function highlights(palette)
             diffNewFile   = { fg = palette.purple, },
             diffOldFile   = { fg = palette.yellow, },
             diffRemoved   = { fg = git_removed_text_color, },
-        },
-        telescope = {
-            TelescopeBorder = { fg = palette.highlight_high, },
-            TelescopeNormal = { fg = palette.text, },
-            TelescopePromptCounter = { fg = palette.yellow, },
-            TelescopeTitle = { fg = palette.text, },
         },
         treesitter = {
             ["@attribute"] = { fg = metadata_text_color, },
