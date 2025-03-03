@@ -1,8 +1,9 @@
 local c = require("sakura.color-utils")
 
 local function highlights(palette)
+    local float_background_color = palette.surface
+
     local selection_background_color = palette.highlight_medium
-    local selection_text_color = palette.text
 
     local separator_color = palette.highlight_high
 
@@ -102,7 +103,7 @@ local function highlights(palette)
             MoreMsg      = { fg = palette.pink, },
             NonText      = { fg = palette.subtle, },
             Normal       = { fg = palette.text, bg = palette.base, },
-            NormalFloat  = { fg = palette.text, bg = palette.surface, },
+            NormalFloat  = { fg = palette.text, bg = float_background_color, },
             NormalNC     = { fg = palette.subtle, bg = palette.base, },
             Pmenu        = { fg = palette.subtle, bg = palette.surface, },
             PmenuSbar    = { link = "Pmenu", },
@@ -118,6 +119,7 @@ local function highlights(palette)
             SpellLocal   = { sp = palette.purple, undercurl = true, },
             SpellRare    = { sp = palette.purple, undercurl = true, },
             Title        = { fg = palette.text, bold = true, },
+            FloatTitle   = { fg = palette.text, bg = float_background_color, bold = true, },
             VertSplit    = { link = "WinSeparator", },
             Visual       = { bg = selection_background_color, },
             VisualNOS    = { link = "Visual", },
