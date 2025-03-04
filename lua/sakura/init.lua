@@ -88,10 +88,6 @@ local function highlights(palette)
             CursorIM     = { link = "Cursor", },
             CursorLine   = { bg = palette.highlight_low, },
             CursorLineNr = { fg = palette.pink, },
-            DiffAdd      = { bg = git_added_background_color, },
-            DiffChange   = { bg = git_changed_background_color, },
-            DiffDelete   = { bg = git_removed_background_color, },
-            DiffText     = { bg = c.saturate(git_changed_text_color, 10), },
             Directory    = { fg = palette.yellow, },
             EndOfBuffer  = { fg = whitespace_text_color, },
             ErrorMsg     = { fg = palette.red, },
@@ -134,6 +130,10 @@ local function highlights(palette)
         git = {
             Added = { fg = git_added_text_color, },
             Removed = { fg = git_removed_text_color, },
+            DiffAdd      = { bg = git_added_background_color, },
+            DiffChange   = { bg = git_changed_background_color, },
+            DiffDelete   = { bg = git_removed_background_color, },
+            DiffText     = { bg = c.blend(git_changed_text_color, 0.25, git_changed_background_color), },
         },
         gitsigns = {
             GitSignsAdd = { fg = git_added_text_color, },
