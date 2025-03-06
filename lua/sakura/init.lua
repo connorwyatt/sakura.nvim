@@ -255,6 +255,12 @@ local function highlights(palette)
             diffOldFile   = { fg = palette.yellow, },
             diffRemoved   = { fg = git_removed_text_color, },
         },
+        telescope = {
+            TelescopeBorder = { fg = palette.highlight_high, },
+            TelescopeNormal = { fg = palette.text, },
+            TelescopePromptCounter = { fg = palette.yellow, },
+            TelescopeTitle = { fg = palette.text, },
+        },
         treesitter = {
             ["@attribute"] = { fg = metadata_text_color, },
             ["@attribute.builtin"] = { link = "@attribute", },
