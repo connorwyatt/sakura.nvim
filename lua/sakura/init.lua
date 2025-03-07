@@ -162,6 +162,9 @@ local function highlights(palette)
         },
         neotree = {
             NeoTreeFileName = { fg = palette.text, },
+            NeoTreeFileStats = { fg = palette.subtle, },
+            NeoTreeRootName = { fg = palette.text, bold = true, },
+            NeoTreeFileStatsHeader = { fg = palette.subtle, bold = true, },
             NeoTreeDotfile = { fg = palette.subtle, },
             NeoTreeModified = { link = "NeoTreeFileName", },
             NeoTreeGitAdded = { link = "GitSignsAdd", },
