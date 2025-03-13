@@ -334,7 +334,7 @@ local function highlights(palette)
             diffAdded     = { fg = git_added_text_color, },
             diffChanged   = { fg = git_changed_text_color, },
             diffFile      = { fg = palette.cyan, },
-            diffIndexLine = { fg = palette.green, },
+            diffIndexLine = { fg = palette.pink, },
             diffLine      = { fg = palette.pink, },
             diffNewFile   = { fg = palette.purple, },
             diffOldFile   = { fg = palette.yellow, },
