@@ -31,7 +31,7 @@ return {
     red_background = c.desaturate(c.darken(color_palette.red, 40), 30),
     highlight_low = c.lighten(base, 5),
     highlight_medium = c.lighten(base, 10),
-    highlight_high = c.desaturate(c.lighten(base, 25), 15),
+    highlight_high = c.lighten(base, 20),
     cursor_background = color_palette.pink,
     cursor_text = white,
 }

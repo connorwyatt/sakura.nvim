@@ -37,7 +37,7 @@ return {
     red_background = c.lighten(red, 25),
     highlight_low = pink_background,
     highlight_medium = c.darken(pink_background, 3),
-    highlight_high = c.darken(pink_background, 20),
+    highlight_high = c.darken(pink_background, 10),
     cursor_background = pink,
     cursor_text = white,
 }
