@@ -6,19 +6,17 @@ local text = { 230, 5, 83, }
 
 local white = "#ffffff"
 
-local pink_background = c.desaturate(c.darken(color_palette.pink, 35), 25)
-
 return {
     is_dark = true,
     base = base,
-    surface = c.lighten(base, 5),
-    overlay = c.lighten(base, 10),
+    surface = c.darken(base, 3),
+    overlay = c.darken(base, 6),
     text = text,
     subtle = c.saturate(c.darken(text, 25), 10),
-    muted = c.saturate(c.darken(text, 55), 20),
+    muted = c.saturate(c.darken(text, 45), 20),
     white = white,
     pink = color_palette.pink,
-    pink_background = pink_background,
+    pink_background = c.desaturate(c.darken(color_palette.pink, 35), 25),
     yellow = color_palette.yellow,
     yellow_background = c.desaturate(c.darken(color_palette.yellow, 35), 25),
     green = color_palette.green,
