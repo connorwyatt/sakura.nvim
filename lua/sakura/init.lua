@@ -196,7 +196,7 @@ local function highlights(palette)
             lCursor           = { link = "Cursor", },
         },
         folds = {
-            Folded = { bg = palette.surface, },
+            Folded = {},
         },
         git = {
             Added      = { fg = git_added_text_color, },
