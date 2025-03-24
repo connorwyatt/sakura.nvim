@@ -286,7 +286,7 @@ local function highlights(palette)
             StatusLineFileModified          = { fg = palette.cyan, italic = true, },
             StatusLineFileReadonly          = { fg = palette.yellow, },
             StatusLineGitAdded              = { fg = git_added_text_color, },
-            StatusLineGitBranch             = { fg = palette.yellow, },
+            StatusLineGitBranch             = { fg = palette.red, },
             StatusLineGitChanged            = { fg = git_changed_text_color, },
             StatusLineGitRemoved            = { fg = git_removed_text_color, },
             StatusLineModeCommand           = { bg = palette.pink, fg = palette.white, bold = true, },
