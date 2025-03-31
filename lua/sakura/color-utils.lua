@@ -12,22 +12,32 @@ local function hsl_to_rgb(hsl)
     local l = hsl[3] / 100
 
     if s == 0 then
-        return { l, l, l, }
+        return { l, l, l }
     end
 
     local function hue_to_rgb(p, q, t)
-        if t < 0 then t = t + 1 end
-        if t > 1 then t = t - 1 end
-        if t < 1 / 6 then return p + (q - p) * 6 * t end
-        if t < 1 / 2 then return q end
-        if t < 2 / 3 then return p + (q - p) * (2 / 3 - t) * 6 end
+        if t < 0 then
+            t = t + 1
+        end
+        if t > 1 then
+            t = t - 1
+        end
+        if t < 1 / 6 then
+            return p + (q - p) * 6 * t
+        end
+        if t < 1 / 2 then
+            return q
+        end
+        if t < 2 / 3 then
+            return p + (q - p) * (2 / 3 - t) * 6
+        end
         return p
     end
 
     local q = l < 1 / 2 and l * (1 + s) or l + s - l * s
     local p = 2 * l - q
 
-    return { hue_to_rgb(p, q, h + 1 / 3) * 255, hue_to_rgb(p, q, h) * 255, hue_to_rgb(p, q, h - 1 / 3) * 255, }
+    return { hue_to_rgb(p, q, h + 1 / 3) * 255, hue_to_rgb(p, q, h) * 255, hue_to_rgb(p, q, h - 1 / 3) * 255 }
 end
 
 ---@param rgb RGB
@@ -42,7 +52,7 @@ local function rgb_to_hsl(rgb)
     local h = b / 2
 
     if max == min then
-        return { 0, 0, h, }
+        return { 0, 0, h }
     end
 
     local s, l = h, h
@@ -57,7 +67,7 @@ local function rgb_to_hsl(rgb)
         h = (r - g) / d + 4
     end
 
-    return { h * 1 / 6 * 360, s * 100, l * 100, }
+    return { h * 1 / 6 * 360, s * 100, l * 100 }
 end
 
 ---@param foreground_hsl HSL foreground color
@@ -79,7 +89,7 @@ function M.blend(foreground_hsl, opacity, background_hsl)
         hue = opacity * foreground_hue + ((1 - opacity) * background_hue)
     end
 
-    return { hue, simple_blend_channel(2), simple_blend_channel(3), }
+    return { hue, simple_blend_channel(2), simple_blend_channel(3) }
 end
 
 ---@param foreground_hsl HSL foreground color
@@ -94,7 +104,7 @@ function M.blend_as_rgb(foreground_hsl, opacity, background_hsl)
         return opacity * foreground_rgb[i] + ((1 - opacity) * background_rgb[i])
     end
 
-    return rgb_to_hsl({ blend_channel(1), blend_channel(2), blend_channel(3), })
+    return rgb_to_hsl({ blend_channel(1), blend_channel(2), blend_channel(3) })
 end
 
 ---@param hsl HSL color to lighten
@@ -111,7 +121,7 @@ function M.lighten(hsl, amount)
         new_lightness = 0
     end
 
-    return { hsl[1], hsl[2], new_lightness, }
+    return { hsl[1], hsl[2], new_lightness }
 end
 
 ---@param hsl HSL color to darken
@@ -128,7 +138,7 @@ function M.darken(hsl, amount)
         new_lightness = 0
     end
 
-    return { hsl[1], hsl[2], new_lightness, }
+    return { hsl[1], hsl[2], new_lightness }
 end
 
 ---@param hsl HSL color to saturate
@@ -145,7 +155,7 @@ function M.saturate(hsl, amount)
         new_saturation = 0
     end
 
-    return { hsl[1], new_saturation, hsl[3], }
+    return { hsl[1], new_saturation, hsl[3] }
 end
 
 ---@param hsl HSL color to desaturate
@@ -162,7 +172,7 @@ function M.desaturate(hsl, amount)
         new_saturation = 0
     end
 
-    return { hsl[1], new_saturation, hsl[3], }
+    return { hsl[1], new_saturation, hsl[3] }
 end
 
 ---@param hsl HSL

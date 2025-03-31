@@ -1,8 +1,8 @@
 local color_palette = require("sakura.colors")
 local c = require("sakura.color-utils")
 
-local base = { 323, 40, 95, }
-local text = { 323, 20, 40, }
+local base = { 323, 40, 95 }
+local text = { 323, 20, 40 }
 
 local white = "#ffffff"
 
