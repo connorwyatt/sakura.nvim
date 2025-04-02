@@ -60,7 +60,7 @@ local function highlights(palette)
             BlinkCmpLabelDeprecated = { fg = palette.subtle, strikethrough = true },
             BlinkCmpLabelDescription = { fg = palette.yellow },
             BlinkCmpLabelDetail = { fg = palette.subtle },
-            BlinkCmpLabelMatch = { bold = true },
+            BlinkCmpLabelMatch = { sp = palette.subtle, bold = true, underline = true },
             BlinkCmpMenuSelection = { bg = selection_background_color },
             BlinkCmpScrollBarGutter = { bg = palette.overlay },
             BlinkCmpScrollBarThumb = { bg = palette.muted },
