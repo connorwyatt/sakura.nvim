@@ -269,6 +269,7 @@ local function highlights(palette)
         snacks = {
             SnacksIndent = { fg = whitespace_text_color },
             SnacksIndentScope = { fg = palette.pink },
+            SnacksPickerMatch = { fg = palette.pink, bold = true, underline = true },
         },
         statusline = {
             StatusLine = { fg = palette.text, bg = palette.overlay },
