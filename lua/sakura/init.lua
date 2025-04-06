@@ -147,6 +147,7 @@ local function highlights(palette)
             DiagnosticWarn = { fg = palette.yellow },
         },
         editor = {
+            ColorColumn = { bg = whitespace_text_color },
             CurSearch = { bg = strong_selection_background_color, underline = true },
             Cursor = { fg = palette.cursor_text, bg = palette.cursor_background },
             CursorColumn = { link = "CursorLine" },

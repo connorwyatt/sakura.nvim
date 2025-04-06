@@ -13,7 +13,7 @@ return {
     overlay = c.darken(base, 6),
     text = text,
     subtle = c.saturate(c.darken(text, 25), 10),
-    muted = c.saturate(c.darken(text, 45), 20),
+    muted = c.saturate(c.darken(text, 55), 20),
     white = white,
     pink = color_palette.pink,
     pink_background = c.desaturate(c.darken(color_palette.pink, 35), 25),
