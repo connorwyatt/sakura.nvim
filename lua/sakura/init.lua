@@ -180,7 +180,7 @@ local function highlights(palette)
             Search = { bg = selection_background_color },
             SignColumn = { fg = palette.subtle },
             SignColumnSB = { link = "SignColumn" },
-            SpellBad = { sp = palette.red, underdotted = true },
+            SpellBad = { sp = palette.yellow, underdotted = true },
             SpellCap = { sp = palette.yellow, underdotted = true },
             SpellLocal = { sp = palette.purple, underdotted = true },
             SpellRare = { sp = palette.purple, underdotted = true },
