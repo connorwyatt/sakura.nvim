@@ -198,6 +198,7 @@ local function highlights(palette)
         },
         folds = {
             Folded = {},
+            FoldText = { fg = palette.pink },
         },
         git = {
             Added = { fg = git_added_text_color },
