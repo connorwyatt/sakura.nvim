@@ -22,7 +22,8 @@ local function highlights(palette)
     local comment_text_color = palette.subtle
     local operator_text_color = palette.subtle
     local punctuation_text_color = palette.subtle
-    local whitespace_text_color = palette.muted
+    local guide_color = palette.muted
+    local whitespace_text_color = c.blend(palette.subtle, 0.5, palette.muted)
 
     local git_added_text_color = palette.green
     local git_added_background_color = palette.green_background
@@ -147,7 +148,7 @@ local function highlights(palette)
             DiagnosticWarn = { fg = palette.yellow },
         },
         editor = {
-            ColorColumn = { bg = whitespace_text_color },
+            ColorColumn = { bg = guide_color },
             CurSearch = { bg = strong_selection_background_color, underline = true },
             Cursor = { fg = palette.cursor_text, bg = palette.cursor_background },
             CursorColumn = { link = "CursorLine" },
@@ -269,7 +270,7 @@ local function highlights(palette)
             UfoFoldedBg = { bg = palette.surface },
         },
         snacks = {
-            SnacksIndent = { fg = whitespace_text_color },
+            SnacksIndent = { fg = guide_color },
             SnacksIndentScope = { fg = palette.pink },
             SnacksPickerMatch = { fg = palette.pink, bold = true, underline = true },
         },
@@ -450,7 +451,7 @@ local function highlights(palette)
             TreesitterContextLineNumber = { bg = palette.surface },
         },
         virt_column = {
-            VirtColumn = { fg = whitespace_text_color },
+            VirtColumn = { fg = guide_color },
         },
     }
 end
