@@ -23,7 +23,7 @@ local function highlights(palette)
     local operator_text_color = palette.subtle
     local punctuation_text_color = palette.subtle
     local guide_color = palette.muted
-    local whitespace_text_color = c.blend(palette.subtle, 0.5, palette.muted)
+    local whitespace_text_color = c.blend(palette.subtle, 0.25, palette.muted)
 
     local git_added_text_color = palette.green
     local git_added_background_color = palette.green_background
